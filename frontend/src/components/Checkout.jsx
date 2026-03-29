@@ -23,7 +23,7 @@ function Checkout() {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/cart')
+      const response = await axios.get('https://amazon-clone-backend-2l84.onrender.com/api/cart')
       setCartItems(response.data)
       setLoading(false)
     } catch (error) {
@@ -49,7 +49,7 @@ function Checkout() {
 
     setPlacingOrder(true)
     try {
-      const response = await axios.post('http://localhost:5000/api/orders', {
+      const response = await axios.post('https://amazon-clone-backend-2l84.onrender.com/api/orders', {
         shippingAddress
       })
       navigate(`/order-confirmation/${response.data.orderId}`)

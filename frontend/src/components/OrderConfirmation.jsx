@@ -14,7 +14,7 @@ function OrderConfirmation() {
 
   const fetchOrder = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/orders/${orderId}`)
+      const response = await axios.get(`https://amazon-clone-backend-2l84.onrender.com/api/orders/${orderId}`)
       setOrder(response.data)
       setLoading(false)
     } catch (error) {

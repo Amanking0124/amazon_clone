@@ -15,7 +15,7 @@ function App() {
 
   const refreshCartCount = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/cart')
+      const response = await axios.get('https://amazon-clone-backend-2l84.onrender.com/api/cart')
       setCartCount(response.data.reduce((total, item) => total + item.quantity, 0))
     } catch (error) {
       console.error('Error refreshing cart count:', error)

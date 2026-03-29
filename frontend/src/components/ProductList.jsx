@@ -63,7 +63,7 @@ function ProductList() {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/categories')
+      const response = await axios.get('https://amazon-clone-backend-2l84.onrender.com/api/categories')
       setCategories(response.data)
     } catch (error) {
       console.error('Error fetching categories:', error)
@@ -76,7 +76,7 @@ function ProductList() {
       if (search) params.search = search
       if (category && category !== 'All') params.category = category
 
-      const response = await axios.get('http://localhost:5000/api/products', { params })
+      const response = await axios.get('https://amazon-clone-backend-2l84.onrender.com/api/products', { params })
       const { data, total: totalCount } = response.data
       const normalized = data.map(normalizeProduct)
 
@@ -94,7 +94,7 @@ function ProductList() {
 
   const addToCart = async (productId) => {
     try {
-      await axios.post('http://localhost:5000/api/cart', { productId, quantity: 1 })
+      await axios.post('https://amazon-clone-backend-2l84.onrender.com/api/cart', { productId, quantity: 1 })
       await refreshCartCount()
       alert('Product added to cart!')
     } catch (error) {
@@ -157,7 +157,7 @@ function ProductList() {
           <div key={product.id} className="product-card">
             <Link to={`/product/${product.id}`} className="product-link">
               <img
-                src={product.image_url || FALLBACK_IMAGE}
+                src={(product.image_url || '').trim() || FALLBACK_IMAGE}
                 alt={product.name}
                 className="product-image"
                 onError={(e) => {

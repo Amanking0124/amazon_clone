@@ -17,7 +17,7 @@ function Cart() {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/cart')
+      const response = await axios.get('https://amazon-clone-backend-2l84.onrender.com/api/cart')
       setCartItems(response.data)
       setLoading(false)
       await refreshCartCount()
@@ -30,9 +30,9 @@ function Cart() {
   const updateQuantity = async (cartId, newQuantity) => {
     try {
       if (newQuantity <= 0) {
-        await axios.delete(`http://localhost:5000/api/cart/${cartId}`)
+        await axios.delete(`https://amazon-clone-backend-2l84.onrender.com/api/cart/${cartId}`)
       } else {
-        await axios.put(`http://localhost:5000/api/cart/${cartId}`, { quantity: newQuantity })
+        await axios.put(`https://amazon-clone-backend-2l84.onrender.com/api/cart/${cartId}`, { quantity: newQuantity })
       }
       await fetchCart()
     } catch (error) {
@@ -43,7 +43,7 @@ function Cart() {
 
   const removeItem = async (cartId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cart/${cartId}`)
+      await axios.delete(`https://amazon-clone-backend-2l84.onrender.com/api/cart/${cartId}`)
       await fetchCart()
     } catch (error) {
       console.error('Error removing item:', error)

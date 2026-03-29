@@ -33,7 +33,7 @@ function ProductDetail() {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/products/${id}`)
+      const response = await axios.get(`https://amazon-clone-backend-2l84.onrender.com/api/products/${id}`)
       const item = response.data
       const extraImages = parseImages(item.extra_images)
 
@@ -55,7 +55,7 @@ function ProductDetail() {
 
   const addToCart = async () => {
     try {
-      await axios.post('http://localhost:5000/api/cart', { productId: product.id, quantity: 1 })
+      await axios.post('https://amazon-clone-backend-2l84.onrender.com/api/cart', { productId: product.id, quantity: 1 })
       await refreshCartCount()
       alert('Product added to cart!')
     } catch (error) {
@@ -66,7 +66,7 @@ function ProductDetail() {
 
   const buyNow = async () => {
     try {
-      await axios.post('http://localhost:5000/api/cart', { productId: product.id, quantity: 1 })
+      await axios.post('https://amazon-clone-backend-2l84.onrender.com/api/cart', { productId: product.id, quantity: 1 })
       await refreshCartCount()
       window.location.href = '/checkout'
     } catch (error) {
