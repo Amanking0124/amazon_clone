@@ -1,24 +1,21 @@
 {
-  "name": "backend",
+  "name": "amazon-clone-backend",
   "version": "1.0.0",
+  "description": "Amazon clone backend API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node initDb.js && node index.js",
     "dev": "nodemon index.js",
-    "init-db": "node -e \"const sqlite3 = require('sqlite3').verbose(); const db = new sqlite3.Database('./amazon_clone.db'); const fs = require('fs'); const sql = fs.readFileSync('../database/init.sql', 'utf8'); db.exec(sql, (err) => { if (err) console.error(err); else console.log('Database initialized'); db.close(); });\""
+    "init-db": "node initDb.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "engines": {
+    "node": ">=20 <21"
+  },
   "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "pg": "^8.20.0",
-    "sequelize": "^6.37.8",
-    "sequelize-cli": "^6.6.5",
-    "sqlite3": "^6.0.1"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
